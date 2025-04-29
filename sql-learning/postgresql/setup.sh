@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Configurable variables
 CONTAINER_NAME="postgres-db"
