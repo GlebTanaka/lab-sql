@@ -1,0 +1,24 @@
+# Ignore environment config files
+*.env
+*.env.*
+
+# Ignore database storage/data folders (e.g., volumes)
+**/data/
+**/data/*
+
+# Ignore log files
+*.log
+
+# Ignore SQLite or similar DBs
+*.sqlite
+*.db
+
+# Ignore system and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Ignore backups
+*.bak
+*.sql.gz
