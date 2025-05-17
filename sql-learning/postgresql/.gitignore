@@ -1,0 +1,19 @@
+# Ignore environment config
+.env
+.env.*
+
+# Ignore PostgreSQL data directory
+data/
+data/*
+
+# Ignore logs
+*.log
+
+# Ignore backup files
+*.sql
+*.sql.gz
+*.dump
+
+# Ignore editor files
+.vscode/
+.idea/
