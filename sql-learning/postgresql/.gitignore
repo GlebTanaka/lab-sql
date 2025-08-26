@@ -10,7 +10,7 @@ data/*
 *.log
 
 # Ignore backup files
-*.sql
+# *.sql
 *.sql.gz
 *.dump
 

@@ -15,7 +15,7 @@ if (Test-Path $EnvFile) {
             $name = $parts[0].Trim()
             $value = $parts[1].Trim()
             [System.Environment]::SetEnvironmentVariable($name, $value)
-            
+
             # Store password in a separate variable for additional security
             if ($name -eq "POSTGRES_PASSWORD") {
                 $PostgresPassword = $value
