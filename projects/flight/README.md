@@ -27,6 +27,12 @@ It was completed as part of the *Real-World SQL Portfolio Builder*, and showcase
 - Transform and insert data from `staging` into `skyhub` (coerce types, trim text, normalize status values).
 - Run sanity checks: table counts, orphan FK checks, status distribution, and booking_date ranges.
 - Commit each step (schemas, staging tables, loads, final tables, transforms, checks) as separate Git commits for clear incremental progress.
+  - [X] schemas
+  - [X] staging tables
+  - [X] loads
+  - [X] final tables
+  - [ ] transforms
+  - [ ] checks
 
 ## Reset database (start fresh)
 - Use reset.sql to drop and recreate the project role and database, then re-create schemas.
