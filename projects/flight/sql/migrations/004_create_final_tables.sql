@@ -27,3 +27,15 @@ CREATE INDEX IF NOT EXISTS idx_bookings_customer ON skyhub.bookings(customer_id)
 CREATE INDEX IF NOT EXISTS idx_bookings_flight   ON skyhub.bookings(flight_id);
 CREATE INDEX IF NOT EXISTS idx_bookings_date     ON skyhub.bookings(booking_date);
 CREATE INDEX IF NOT EXISTS idx_bookings_status   ON skyhub.bookings(status);
+
+-- Capture rows rejected during bookings load
+CREATE TABLE IF NOT EXISTS skyhub.bookings_rejects (
+  booking_id    integer,
+  customer_id   integer,
+  flight_id     integer,
+  price_raw     text,
+  status_raw    text,
+  booking_date  text,
+  reject_reason text NOT NULL,
+  rejected_at   timestamptz NOT NULL DEFAULT now()
+);
