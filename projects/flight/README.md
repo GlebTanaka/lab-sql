@@ -34,6 +34,31 @@ It was completed as part of the *Real-World SQL Portfolio Builder*, and showcase
   - [ ] transforms
   - [ ] checks
 
+### Data quality note and remediation
+- Known issue: some bookings reference flight_ids that are missing from flights.csv (e.g., 1, 6, 35). This was not intentional in the source dataset.
+- Approach: the pipeline intentionally rejects those bookings (reason: `missing_flight`) to keep final tables consistent.
+- Verification:
+  ```sql
+  -- SQL
+  SELECT reject_reason, COUNT(*)
+  FROM skyhub.bookings_rejects
+  GROUP BY reject_reason
+  ORDER BY 2 DESC;
+  ```
+- Optional fix (data remediation): backfill the missing flights once you know airline/origin/destination, then re-run the transform to load the affected bookings.
+  ```sql
+  -- SQL
+  -- Backfill template: replace placeholders with correct values
+  INSERT INTO skyhub.flights (flight_id, airline, origin, destination)
+  VALUES
+    (1,  'AirlineX', 'AAA', 'BBB'),
+    (6,  'AirlineY', 'CCC', 'DDD'),
+    (35, 'AirlineZ', 'EEE', 'FFF')
+  ON CONFLICT (flight_id) DO NOTHING;
+
+  -- Re-run transforms to insert the now-valid bookings
+  ```
+
 ## Reset database (start fresh)
 - Use reset.sql to drop and recreate the project role and database, then re-create schemas.
 - Run it from a maintenance DB (e.g., postgres) with autocommit enabled; requires sufficient privileges to terminate sessions.

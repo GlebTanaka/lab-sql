@@ -77,3 +77,13 @@ SELECT
   'duplicate_booking_id_staging' AS reject_reason
 FROM dedup d
 WHERE d.rn > 1;
+
+-- Optional remediation (data fix):
+-- If specific flight_ids are missing from flights.csv but referenced by bookings,
+-- you may backfill them here (replace with correct airline/origin/destination).
+-- After backfilling, re-run this transform to load the previously rejected bookings.
+-- INSERT INTO skyhub.flights (flight_id, airline, origin, destination) VALUES
+--   (1,  'AirlineX', 'AAA', 'BBB'),
+--   (6,  'AirlineY', 'CCC', 'DDD'),
+--   (35, 'AirlineZ', 'EEE', 'FFF')
+-- ON CONFLICT (flight_id) DO NOTHING;
