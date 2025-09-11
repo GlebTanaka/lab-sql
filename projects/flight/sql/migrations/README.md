@@ -8,6 +8,7 @@ This folder contains the SQL scripts to create schemas, load staging data, build
 3. 003_load_staging.sql
 4. 004_create_final_tables.sql
 5. 005_transform_and_load.sql
+6. 006_create_indexes.sql
 
 Tip: Run each script idempotently; scripts are written to be safe to re-run.
 

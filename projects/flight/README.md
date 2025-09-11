@@ -31,7 +31,7 @@ It was completed as part of the *Real-World SQL Portfolio Builder*, and showcase
   - [X] staging tables
   - [X] loads
   - [X] final tables
-  - [ ] transforms
+  - [X] transforms
   - [ ] checks
 
 ### Data quality note and remediation
